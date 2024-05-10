@@ -1,11 +1,15 @@
-import { HomePageServer } from "~/views/home";
-import { getRandomHeroActiveIndex } from "~/app/actions";
-import { BlogPostApi } from "~/app/api/api-helpers";
- async function homePageServerSideProps() {
-  const activeIndex = await getRandomHeroActiveIndex();
-  const posts = await BlogPostApi.list({ limit: 3 });
+import type { GetServerSideProps } from "next";
+import { HomePageServer } from "~/views/home"; 
+import { getRandomHeroActiveIndex } from "~/app/actions"; 
+import { BlogPostApi } from "~/app/api/api-helpers"; 
 
+export async function getServerSideProps(): Promise<
+  GetServerSideProps<{ activeIndex: any; posts: any }>
+> {
+  const activeIndex = await getRandomHeroActiveIndex();
+  const posts: any = await BlogPostApi.list({ limit: 3 }); 
   return {
+    // @ts-ignore
     props: {
       activeIndex,
       posts,
@@ -23,7 +27,7 @@ export default function Home({
   activeIndex,
   posts,
 }: {
-  activeIndex: number;
+  activeIndex: any;
   posts: any;
 }) {
   return <HomePageServer activeIndex={activeIndex} posts={posts} />;

@@ -1,7 +1,7 @@
 import { HomePageServer } from "~/views/home";
 import { getRandomHeroActiveIndex } from "~/app/actions";
 import { BlogPostApi } from "~/app/api/api-helpers";
-export async function homePageServerSideProps() {
+ async function homePageServerSideProps() {
   const activeIndex = await getRandomHeroActiveIndex();
   const posts = await BlogPostApi.list({ limit: 3 });
 

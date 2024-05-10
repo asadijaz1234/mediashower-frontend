@@ -1,4 +1,4 @@
-import { HomePageServer } from "~/views/home";
+import { HomePageServer,HomePage } from "~/views/home";
 
 export const metadata = {
   title: "All-In-One Marketing Content Platform | Media Shower",
@@ -7,5 +7,5 @@ export const metadata = {
 };
 
 export default function Home() {
-  return <HomePageServer />;
+  return <HomePage />;
 }
